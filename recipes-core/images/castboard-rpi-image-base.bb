@@ -17,6 +17,9 @@ IMAGE_FSTYPES = "ext3.xz rpi-sdimg"
 IMAGE_INSTALL += "   packagegroup-core-selinux   avahi-daemon   vulkan-loader vulkan-tools   adwaita-icon-theme-cursors   xdg-user-dirs "
 PREFERRED_VERSION_pipewire = "0.3.22"
 
+# Polkit
+IMAGE_INSTALL_append = " polkit"
+
 # Networking Support
 IMAGE_INSTALL_append = " hostapd"
 IMAGE_INSTALL_append = " dnsmasq"
@@ -40,5 +43,4 @@ IMAGE_INSTALL_append = " castboard-autorun"
 
 # Flutter Applications
 IMAGE_INSTALL_append = " castboard-player"
-
 
