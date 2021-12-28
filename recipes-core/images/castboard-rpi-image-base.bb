@@ -44,3 +44,13 @@ IMAGE_INSTALL_append = " castboard-autorun"
 # Flutter Applications
 IMAGE_INSTALL_append = " castboard-player"
 
+
+#
+# RootFS Post Processing
+#
+rootfs_postprocess_function() {
+    # Create the /media/boot mount target. Castboard will use this to mount the rpi boot partition to.
+    mkdir ${IMAGE_ROOTFS}/media/boot/
+    chown cage ${IMAGE_ROOTFS}/media/boot
+}
+ROOTFS_POSTPROCESS_COMMAND += "rootfs_postprocess_function; "
