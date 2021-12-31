@@ -27,10 +27,12 @@ IMAGE_INSTALL_append = " dnsmasq"
 # Web Servers
 IMAGE_INSTALL_append = " nginx"
 
+IMAGE_INSTALL_append = " python3"
+
 #
 # Scripts
 #
-IMAGE_INSTALL_append = " castboard-autorun"
+#IMAGE_INSTALL_append = " castboard-autorun"
 
 #
 # User Facing Software
@@ -49,8 +51,14 @@ IMAGE_INSTALL_append = " castboard-player"
 # RootFS Post Processing
 #
 rootfs_postprocess_function() {
-    # Create the /media/boot mount target. Castboard will use this to mount the rpi boot partition to.
-    mkdir ${IMAGE_ROOTFS}/media/boot/
-    chown cage ${IMAGE_ROOTFS}/media/boot
+   # Check if we have created the 'cage' user. If so, 
+   # create the /media/boot mount target. Castboard will use this to mount the rpi boot partition to.
+   # Additionaly remove the password for cage so we can login ourselves if needed.
+   user_exists(){ id "$1" &>/dev/null; }
+
+   if user_exists "$1"; code=$?; then
+      mkdir ${IMAGE_ROOTFS}/media/boot/
+      chown cage ${IMAGE_ROOTFS}/media/boot
+   fi    
 }
 ROOTFS_POSTPROCESS_COMMAND += "rootfs_postprocess_function; "
