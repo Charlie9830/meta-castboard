@@ -11,7 +11,7 @@ COMPATIBLE_MACHINE = "^rpi$"
 
 
 # OUTPUT IMAGE TYPE
-IMAGE_FSTYPES = "ext3.xz rpi-sdimg"
+IMAGE_FSTYPES = "ext3.xz rpi-sdimg tar"
 
 # Jwinarske stuff - https://github.com/jwinarske/meta-flutter
 IMAGE_INSTALL += "   packagegroup-core-selinux   avahi-daemon   vulkan-loader vulkan-tools   adwaita-icon-theme-cursors   xdg-user-dirs "
@@ -33,6 +33,18 @@ IMAGE_INSTALL_append = " python3"
 # Scripts
 #
 #IMAGE_INSTALL_append = " castboard-autorun"
+
+# TODO: Cage is pretty much a hard requirement now. It should be added here and solidified.
+
+#
+# Python Modules
+#
+IMAGE_INSTALL_append = " python3-dbus"
+
+#
+# Castboard Updater
+#
+IMAGE_INSTALL_append = " castboard-updater"
 
 #
 # User Facing Software
