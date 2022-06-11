@@ -30,11 +30,10 @@ IMAGE_INSTALL_append = " nginx"
 IMAGE_INSTALL_append = " python3"
 
 #
-# Scripts
+# For running with Cage Compositor.
 #
-#IMAGE_INSTALL_append = " castboard-autorun"
-
-# TODO: Cage is pretty much a hard requirement now. It should be added here and solidified.
+IMAGE_INSTALL_append = " cage"
+SYSTEMD_DEFAULT_TARGET = "graphical.target"
 
 #
 # Python Modules
@@ -56,7 +55,7 @@ IMAGE_INSTALL_append = " castboard-updater"
 #IMAGE_INSTALL_append = " flutter-drm-gbm-backend"
 
 # Flutter Applications
-IMAGE_INSTALL_append = " castboard-player"
+IMAGE_INSTALL_append = " castboard-performer"
 
 
 #
